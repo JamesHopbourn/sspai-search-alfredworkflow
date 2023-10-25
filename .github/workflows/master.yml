@@ -1,0 +1,27 @@
+# 这是一个 GitHub Actions 配置文件
+# 当有新的推送标签（tag）时触发工作流程
+on:
+  push:
+    tags:
+      - '*'
+
+# 定义一个名为 "release" 的工作流程
+jobs:
+  release:
+    # 指定工作流程运行的操作系统环境
+    runs-on: ubuntu-latest
+    steps:
+      # 步骤1: 检出代码仓库
+      - uses: actions/checkout@master
+      # 步骤2: 创建压缩文件作为发布
+      - name: Create Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          filename: "SSPAI-Search.alfredworkflow"
+          exclusions: '*.git*'
+      # 步骤3: 上传发布
+      - name: Upload Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "SSPAI-Search.alfredworkflow"
+          token: ${{ secrets.TOKEN }}
