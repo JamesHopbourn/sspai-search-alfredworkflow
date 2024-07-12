@@ -36,7 +36,7 @@ for item in response:
     result.append(article)
 result.append({
     "title": sys.argv[1],
-    "arg": f"https://www.google.com/search?q=site:sspai.com inurl:post {sys.argv[1]}",
+    "arg": f"https://www.google.com/search?num=100&q=site:sspai.com inurl:post {sys.argv[1]}",
     "icon": { "path": "icon.png" }
 })
 alfredJSON = json.dumps({"items": result}, indent=2, ensure_ascii=False)
