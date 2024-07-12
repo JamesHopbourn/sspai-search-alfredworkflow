@@ -31,10 +31,13 @@ for item in response:
         "subtitle": item["summary"],
         "arg": f"https://sspai.com/post/{item['id']}",
         "autocomplete": item["title"],
-        "icon": {
-            "path": "icon.png"
-        }
+        "icon": { "path": "icon.png" }
     }
     result.append(article)
+result.append({
+    "title": sys.argv[1],
+    "arg": f"https://www.google.com/search?q=site:sspai.com inurl:post {sys.argv[1]}",
+    "icon": { "path": "icon.png" }
+})
 alfredJSON = json.dumps({"items": result}, indent=2, ensure_ascii=False)
 sys.stdout.write(alfredJSON)
