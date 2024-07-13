@@ -36,6 +36,7 @@ for item in response:
     result.append(article)
 result.append({
     "title": sys.argv[1],
+    "subtitle": f"在 Google 上搜索少数派网站上关于「{sys.argv[1]}」的帖子，每页 100 条结果",
     "arg": f"https://www.google.com/search?num=100&q=site:sspai.com inurl:post {sys.argv[1]}",
     "icon": { "path": "icon.png" }
 })
